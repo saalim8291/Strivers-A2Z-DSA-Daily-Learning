@@ -1,0 +1,85 @@
+// Guide: https://takeuforward.org/set-up/how-to-set-up-visual-studio-code-for-c-cp-and-dsa
+
+// For MAC
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "compile",
+      "type": "shell",
+      "command": "/opt/homebrew/bin/g++-16",
+      "args": ["-std=c++17", "-o", "${fileBasenameNoExtension}", "${file}"],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      }
+    },
+    {
+      "label": "compile and run",
+      "type": "shell",
+      "command": "/opt/homebrew/bin/g++-16 -std=c++17 -isysroot $(xcrun --show-sdk-path) -o ${fileBasenameNoExtension} ${file} && ./${fileBasenameNoExtension} < input.txt > output.txt",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
+
+// For Windows
+// Note: It will not work if your default terminal is Powershell. Make it "cmd" then it will work.
+// To change default terminal : Hit clt+shift+p->write:default terminal->change it to cmd.
+// {
+//   "version": "2.0.0",
+//   "tasks": [
+//     {
+//       "label": "Compile and run",
+//       "type": "shell",
+//       "command": "",
+//       "args": [
+//         "copy",
+//         "\"${file}\"",
+//         "${workspaceFolder}\\jspwTest.cpp",
+//         "&&",
+//         "g++",
+//         "jspwTest.cpp",
+//         "-o",
+//         "jspwTest",
+//         "&&",
+//         "jspwTest",
+//         "<",
+//         "input.txt",
+//         ">",
+//         "output.txt",
+//         "&&",
+//         "del",
+//         "jspwTest.exe",
+//         "&&",
+//         "del",
+//         "jspwTest.cpp"
+//       ],
+//       "presentation": {
+//         "reveal": "never"
+//       },
+//       "group": {
+//         "kind": "build",
+//         "isDefault": true,
+//       },
+//       "problemMatcher": {
+//         "owner": "cpp",
+//         "fileLocation": [
+//           "relative",
+//           "${workspaceRoot}"
+//         ],
+//         "pattern": {
+//           "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+//           "file": 1,
+//           "line": 2,
+//           "column": 3,
+//           "severity": 4,
+//           "message": 5
+//         }
+//       }
+//     }
+//   ]
+// }
