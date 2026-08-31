@@ -1,0 +1,9 @@
+*
+* *
+* * *
+* * * *
+* * * * *
+
+
+Hint: In every row, one more star is being added
+j should run i+1 time (j<=i or j=i+1)
